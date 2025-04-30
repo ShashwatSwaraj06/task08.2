@@ -30,13 +30,13 @@ module "aci_redis" {
 # ACR module
 module "acr" {
   source         = "./modules/acr"
+  name           = local.acr_name
   rg_name        = local.rg_name
   location       = var.location
-  acr_name       = local.acr_name
-  blob_url       = module.storage.blob_url
-  sas_token      = module.storage.sas_token
   acr_image_name = var.acr_image_name
   image_tag      = var.image_tag
+  blob_url       = module.storage.blob_url
+  sas_token      = module.storage.sas_token
   tags           = merge(var.tags, { (local.creator_tag) = "" })
 }
 
