@@ -20,11 +20,12 @@ module "keyvault" {
 
 # ACI Redis module
 module "aci_redis" {
-  source   = "./modules/aci_redis"
-  rg_name  = local.rg_name
-  location = var.location
-  kv_id    = module.keyvault.kv_id
-  tags     = merge(var.tags, { (local.creator_tag) = "" })
+  source         = "./modules/aci_redis"
+  rg_name        = local.rg_name
+  location       = var.location
+  kv_id          = module.keyvault.kv_id
+  redis_aci_name = local.redis_aci_name
+  tags           = merge(var.tags, { (local.creator_tag) = "" })
 }
 
 # ACR module
